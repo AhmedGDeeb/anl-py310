@@ -12,7 +12,7 @@ from config import fs, duration, channels, bit_depth
 
 # change this to the path of the test record
 # if empty, it will record a new file
-file_name = ''
+file_name = 'record_20251007_142931.wav'
 alif_start = None
 waw_start = None
 ya_start = None
@@ -53,3 +53,20 @@ duration = len(samples)/fs
 print(f"Audio length: {len(samples)} samples")
 print(f"Duration: {duration:.2f} seconds")
 print(f"Sampling rate (frequency): {fs} Hz")
+
+# --------------------------------------------------------------
+# step 00: plot record
+time = [i * duration / len(samples) for i in range(len(samples))]
+# plot record
+plt.figure()
+plt.plot(
+    time,
+    samples,
+)
+plt.title('Sound Spectrum')
+plt.xlabel('Time (ms)')
+plt.ylabel('Amplitude (dB)')
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(f'{file_name}_spectrum.png', dpi=300, bbox_inches='tight')
+plt.show()
