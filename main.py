@@ -142,3 +142,97 @@ print(f"""
     Ya      {round(f0_ya, 2):5}     {phi_ya}
 --------------------------------------
 """)
+
+# --------------------------------------------------------------
+# step 03: hamming
+from hamming import hamming_window, apply_hamming_window
+from plot import plot_subplots
+
+# Generate Hamming window - raise error if generation fails
+ham = hamming_window(window_length)
+if ham is None:
+    raise ValueError(f"Hamming window generation failed for window length: {window_length}")
+
+# Alif
+# ------------------------------------
+# Apply Hamming window to the signal - raise error if application fails
+alif_hamming = apply_hamming_window(alif_window)
+if alif_hamming is None:
+    raise ValueError(f"Hamming window application failed for signal of length: {len(alif_window)}")
+
+# Create x-axis ranges for each subplot
+# Center the x-axis around zero for better visualization
+x_axis_alif = [i for i in range(-len(alif_window)//2, len(alif_window)//2)]
+x_axis_ham = [i for i in range(-len(ham)//2, len(ham)//2)]
+x_axis_result = [i for i in range(-len(alif_hamming)//2, len(alif_hamming)//2)]
+
+# Generate subplots to visualize the signal processing steps
+plot_subplots(
+    "alif_hamming_" + file_name, 
+    [
+        {'data': x_axis_alif,},      # X-axis for original signal
+        {'data': x_axis_ham,},       # X-axis for Hamming window
+        {'data': x_axis_result,},    # X-axis for windowed result
+    ], 
+    [
+        {'data': alif_window, 'title': 'Alif Sample Window', 'grid': True},        # Original signal
+        {'data': ham, 'title': 'Hamming Window', 'grid': True},               # Hamming window coefficients
+        {'data': alif_hamming, 'title': 'Sample × Hamming', 'grid': True},    # Windowed signal result
+    ]
+)
+
+# Waw
+# ------------------------------------
+# Apply Hamming window to the signal - raise error if application fails
+waw_hamming = apply_hamming_window(waw_window)
+if waw_hamming is None:
+    raise ValueError(f"Hamming window application failed for signal of length: {len(waw_window)}")
+
+# Create x-axis ranges for each subplot
+# Center the x-axis around zero for better visualization
+x_axis_alif = [i for i in range(-len(waw_window)//2, len(waw_window)//2)]
+x_axis_ham = [i for i in range(-len(ham)//2, len(ham)//2)]
+x_axis_result = [i for i in range(-len(waw_hamming)//2, len(waw_hamming)//2)]
+
+# Generate subplots to visualize the signal processing steps
+plot_subplots(
+    "waw_hamming_" + file_name, 
+    [
+        {'data': x_axis_alif,},      # X-axis for original signal
+        {'data': x_axis_ham,},       # X-axis for Hamming window
+        {'data': x_axis_result,},    # X-axis for windowed result
+    ], 
+    [
+        {'data': waw_window, 'title': 'Waw Sample Window', 'grid': True},        # Original signal
+        {'data': ham, 'title': 'Hamming Window', 'grid': True},               # Hamming window coefficients
+        {'data': waw_hamming, 'title': 'Waw Sample × Hamming', 'grid': True},    # Windowed signal result
+    ]
+)
+
+# Ya
+# ------------------------------------
+# Apply Hamming window to the signal - raise error if application fails
+ya_hamming = apply_hamming_window(ya_window)
+if ya_hamming is None:
+    raise ValueError(f"Hamming window application failed for signal of length: {len(ya_window)}")
+
+# Create x-axis ranges for each subplot
+# Center the x-axis around zero for better visualization
+x_axis_alif = [i for i in range(-len(ya_window)//2, len(ya_window)//2)]
+x_axis_ham = [i for i in range(-len(ham)//2, len(ham)//2)]
+x_axis_result = [i for i in range(-len(ya_hamming)//2, len(ya_hamming)//2)]
+
+# Generate subplots to visualize the signal processing steps
+plot_subplots(
+    "ya_hamming_" + file_name, 
+    [
+        {'data': x_axis_alif,},      # X-axis for original signal
+        {'data': x_axis_ham,},       # X-axis for Hamming window
+        {'data': x_axis_result,},    # X-axis for windowed result
+    ], 
+    [
+        {'data': ya_window, 'title': 'Ya Sample Window', 'grid': True},        # Original signal
+        {'data': ham, 'title': 'Hamming Window', 'grid': True},               # Hamming window coefficients
+        {'data': ya_hamming, 'title': 'Ya Sample × Hamming', 'grid': True},    # Windowed signal result
+    ]
+)
