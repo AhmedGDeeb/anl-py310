@@ -1,4 +1,3 @@
-import numpy as np
 from typing import List, Tuple, Optional, Union
 
 def _corr(s: List[float], k: int) -> float:
@@ -10,7 +9,7 @@ def _corr(s: List[float], k: int) -> float:
     
     Parameters:
     -----------
-    s : list or array-like
+    s : list
         Input signal samples
     k : int
         Lag value (can be positive or negative)
@@ -26,7 +25,7 @@ def _corr(s: List[float], k: int) -> float:
     ValueError: If signal is empty
     """
     # Input validation
-    if not isinstance(s, (list, np.ndarray)):
+    if not isinstance(s, list):
         raise TypeError(f"Signal must be list or array-like, got {type(s)}")
     if not isinstance(k, int):
         raise TypeError(f"Lag k must be integer, got {type(k)}")
@@ -49,7 +48,7 @@ def correlations(s: List[float]) -> Optional[List[float]]:
     
     Parameters:
     -----------
-    s : list or array-like
+    s : list
         Input signal samples
         
     Returns:
@@ -60,12 +59,12 @@ def correlations(s: List[float]) -> Optional[List[float]]:
         
     Raises:
     -------
-    TypeError: If input is not a list or array-like
+    TypeError: If input is not a list
     ValueError: If signal contains non-numeric values
     """
     # Input validation
-    if not isinstance(s, (list, np.ndarray)):
-        raise TypeError(f"Signal must be list or array-like, got {type(s)}")
+    if not isinstance(s, list):
+        raise TypeError(f"Signal must be list, got {type(s)}")
     
     if len(s) == 0:
         return None
@@ -101,7 +100,7 @@ def fi_correlation(s: List[float], fs: float, i: int = 1) -> Tuple[Optional[floa
     
     Parameters:
     -----------
-    s : list or array-like
+    s : list
         Input signal samples
     fs : float
         Sampling frequency in Hz
@@ -124,8 +123,8 @@ def fi_correlation(s: List[float], fs: float, i: int = 1) -> Tuple[Optional[floa
     ValueError: If inputs have invalid values
     """
     # Input validation
-    if not isinstance(s, (list, np.ndarray)):
-        raise TypeError(f"Signal must be list or array-like, got {type(s)}")
+    if not isinstance(s, list):
+        raise TypeError(f"Signal must be list, got {type(s)}")
     if not isinstance(fs, (int, float)) or fs <= 0:
         raise ValueError(f"Sampling frequency must be positive number, got {fs}")
     if not isinstance(i, int) or i < 0:

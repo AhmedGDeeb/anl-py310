@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 from typing import Dict, List, Optional, Union, Any
-import numpy as np
 
 def plot_subplots(file_name: Optional[str], x: List[Dict], y: List[Dict]) -> None:
     """

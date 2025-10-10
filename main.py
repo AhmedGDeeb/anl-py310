@@ -34,6 +34,10 @@ if fs == 0:
     exit(-2)
 
 samples, fs = load_audio(file_name, fs)
+
+# convert to list of floats
+samples = [float(i) for i in samples]
+
 if len(samples) == 0:
     print(f"{file_name} is empty, exit program.")
     exit(-3)
@@ -276,5 +280,51 @@ plot_subplots(
         {'data': ya_window, 'title': 'Ya Sample Window', 'grid': True},        # Original signal
         {'data': ham, 'title': 'Hamming Window', 'grid': True},               # Hamming window coefficients
         {'data': ya_hamming, 'title': 'Ya Sample × Hamming', 'grid': True},    # Windowed signal result
+    ]
+)
+
+
+# --------------------------------------------------------------
+# step 04: Pre-emphasis signal
+from pre_emphasis import pre_emphasis_filter
+alif_pre_emphasis = pre_emphasis_filter(alif_window, alpha=0.97)
+waw_pre_emphasis = pre_emphasis_filter(waw_window, alpha=0.97)
+ya_pre_emphasis = pre_emphasis_filter(ya_window, alpha=0.97)
+
+# plot results
+from plot import plot_subplots
+plot_subplots(
+    "alif_pre_emphasis_" + file_name, 
+    [
+        {'data': [i for i in range(len(alif_hamming))],},
+        {'data': [i for i in range(len(alif_pre_emphasis))],},
+    ], 
+    [
+        {'data': alif_hamming, 'title': 'Alif Hamming Sample Window', 'grid': True},
+        {'data': alif_pre_emphasis, 'title': 'Alif Pre-emphasis Hamming Sample', 'grid': True},
+    ]
+)
+
+plot_subplots(
+    "waw_pre_emphasis_" + file_name, 
+    [
+        {'data': [i for i in range(len(waw_hamming))],},
+        {'data': [i for i in range(len(waw_pre_emphasis))],},
+    ], 
+    [
+        {'data': waw_hamming, 'title': 'Waw Hamming Sample Window', 'grid': True},
+        {'data': waw_pre_emphasis, 'title': 'Waw Pre-emphasis Hamming Sample', 'grid': True},
+    ]
+)
+
+plot_subplots(
+    "ya_pre_emphasis_" + file_name, 
+    [
+        {'data': [i for i in range(len(ya_hamming))],},
+        {'data': [i for i in range(len(ya_pre_emphasis))],},
+    ], 
+    [
+        {'data': ya_hamming, 'title': 'Ya Hamming Sample Window', 'grid': True},
+        {'data': ya_pre_emphasis, 'title': 'Ya Pre-emphasis Hamming Sample', 'grid': True},
     ]
 )

@@ -1,7 +1,5 @@
 from math import pi, cos
-from typing import List, Optional, Union
-
-import numpy as np
+from typing import List, Optional
 
 # Module-level cache to store computed Hamming windows
 _cache = {}
@@ -64,8 +62,7 @@ def apply_hamming_window(signal: List[float]) -> Optional[List[float]]:
     Hamming window coefficient.
     
     Args:
-        signal:  list or array-like
-                Input signal samples
+        signal:  list of Input signal samples
         
     Returns:
         List of float: Windowed signal, or None if input signal is empty.
@@ -82,8 +79,8 @@ def apply_hamming_window(signal: List[float]) -> Optional[List[float]]:
         None
     """
     # Input validation
-    if not isinstance(signal, (list, np.ndarray)):
-        raise TypeError(f"Signal must be a list or array-like, got {type(signal).__name__}")
+    if not isinstance(signal, list):
+        raise TypeError(f"Signal must be a list, got {type(signal).__name__}")
     
     if len(signal) == 0:
         return None
