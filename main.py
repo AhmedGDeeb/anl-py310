@@ -127,12 +127,13 @@ plt.show()
 
 # --------------------------------------------------------------
 # step 02: f0 - fundemental period
-from autocorrelation import fi_correlation
+from autocorrelation import fi_correlation, correlations
 
 f0_alif, phi_alif, k_alif = fi_correlation(alif_window, fs, 1)
 f0_waw, phi_waw, k_waw = fi_correlation(waw_window, fs, 1)
 f0_ya, phi_ya, k_ya = fi_correlation(ya_window, fs, 1)
 
+# show results
 print(f"""
 # fundemental frequency - f0 (Hz):
 --------------------------------------
@@ -143,6 +144,47 @@ print(f"""
 --------------------------------------
 """)
 
+# plot correlations
+corr_alif = correlations(alif_window)
+corr_waw = correlations(waw_window)
+corr_ya = correlations(ya_window)
+
+from plot import plot_subplots
+plot_subplots(
+    "alif_corr_" + file_name, 
+    [
+        {'data': [i for i in range(len(alif_window))],},
+        {'data': [i / fs for i in range(-len(corr_alif)//2+1, len(corr_alif)//2+1)],},
+    ], 
+    [
+        {'data': alif_window, 'title': 'Alif Sample Window', 'grid': True},
+        {'data': corr_alif, 'title': 'Alif Sample Correlation', 'grid': True},
+    ]
+)
+
+plot_subplots(
+    "waw_corr_" + file_name, 
+    [
+        {'data': [i for i in range(len(waw_window))],},
+        {'data': [i / fs for i in range(-len(corr_waw)//2+1, len(corr_waw)//2+1)],},
+    ], 
+    [
+        {'data': waw_window, 'title': 'Waw Sample Window', 'grid': True},
+        {'data': corr_waw, 'title': 'Waw Sample Correlation', 'grid': True},
+    ]
+)
+
+plot_subplots(
+    "ya_corr_" + file_name, 
+    [
+        {'data': [i for i in range(len(ya_window))],},
+        {'data': [i / fs for i in range(-len(corr_ya)//2+1, len(corr_ya)//2+1)],},
+    ], 
+    [
+        {'data': ya_window, 'title': 'Ya Sample Window', 'grid': True},
+        {'data': corr_ya, 'title': 'Ya Sample Correlation', 'grid': True},
+    ]
+)
 # --------------------------------------------------------------
 # step 03: hamming
 from hamming import hamming_window, apply_hamming_window
