@@ -135,6 +135,41 @@ To contribute to project development:
 4. أرسل طلب الدمج (Pull Request)
 </div>
 
+
+</div>
+
+# 📊 Results & Analysis / النتائج والتحليل
+
+## 🔗 Detailed Results / النتائج التفصيلية
+
+For complete analysis results, charts, and detailed comparisons with Praat software, please refer to the dedicated results document:
+
+**[📄 View Full Results Analysis](./results/ITE_ANL601_HW_F24_C2_ahmad_152818.md)**
+
+<div dir="rtl">
+للاطلاع على النتائج الكاملة، المخططات البيانية، والمقارنات التفصيلية مع برنامج Praat، يرجى الرجوع إلى وثيقة النتائج المخصصة:
+
+**[📄 عرض تحليل النتائج الكامل](./results/ITE_ANL601_HW_F24_C2_ahmad_152818.md)**
+</div>
+
+## 📈 Key Findings / أبرز النتائج
+
+The comprehensive analysis reveals important acoustic characteristics of the Arabic word "صارحوني" including:
+
+- Fundamental frequency patterns across different vowels
+- Formant transitions between phonemes
+- Spectral properties and energy distribution
+- Comparison between Python and Praat methodologies
+
+<div dir="rtl">
+يكشف التحليل الشامل عن الخصائص الصوتية المهمة للكلمة العربية "صارحوني" بما في ذلك:
+
+- أنماط التردد الأساسي عبر الأصوات المديّة المختلفة
+- انتقالات البواني بين الفونيمات
+- الخصائص الطيفية وتوزيع الطاقة
+- المقارنة بين منهجيات Python و Praat
+</div>
+
 ## 📄 License / الترخيص
 
 <div dir="rtl">
@@ -148,7 +183,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 - **Student**: ahmad ghassan deeb
 - **Experinece**: senior python developer (+10 years)
 - **Student ID**: 152818
-- **Class**: C1
+- **Class**: C2
 - **Semester**: F24
 - **Course**: Natural Language Processing - NLP-ANL601
 - **Professor**: Dr. Rwaad Melhem
@@ -158,15 +193,13 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 - **الطالب**: أحمد غسان ديب
 - **رقم الطالب**: 152818
-- **الشعبة**: C1
+- **الشعبة**: C2
 - **الفصل**: F24
 - **المقرر**: معالجة اللغات الطبيعية - NLP-ANL601
 - **الأستاذ**: د. رواد ملحم
 - **المنسق**: د. أميمة الدكاك
 
-</div>
-
-## 📞 Contact / الاتصال
+## 📞 Contact / معلومات التواصل
 
 For inquiries or issue reporting:
 - Email: ahmad_152818@svuonline.org
